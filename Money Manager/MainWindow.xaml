@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="800">
     <Grid>
-        <Image Source="C:\Users\rodi4\OneDrive\Рабочий стол\background.jpg" Stretch="Fill" Opacity="0.7"/>
+        <Image Source="/img/background.jpg" Stretch="Fill" Opacity="0.7"/>
 
         <Border CornerRadius="12" BorderThickness="2" Opacity="0.95">
             <Border.BorderBrush>

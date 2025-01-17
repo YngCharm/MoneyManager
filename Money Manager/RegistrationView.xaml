@@ -19,14 +19,14 @@
             <RowDefinition Height="4*"/>
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Column="1" Text="Finance Manager" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="32" FontFamily="{StaticResource MontserratSubrayada}"/>
+        <TextBlock Grid.Column="1" Text="Finance Manager" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="32" />
         <Grid Grid.Row="1" Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBlock Text="username" Margin="140,30,0,0" Foreground="White"/>
+            <TextBlock Text="username" Margin="135,10,0,0" Foreground="White"/>
             <TextBox Height="40"
                      Width="300"
                      Padding="5,0,5,0"
@@ -37,7 +37,7 @@
                      BorderThickness="0,0,0,2" Text=""/>
             <TextBlock Grid.Row="1"
                        Text="password"
-                       Margin="140,30,0,0"
+                       Margin="135,10,0,0"
                        Foreground="White"/>
             <PasswordBox Grid.Row="1"
                          Padding="5,0,5,0"
@@ -50,7 +50,7 @@
                          BorderThickness="0,0,0,2" Password=""/> 
             <TextBlock Grid.Row="2"
                        Text="confirm password"
-                       Margin="140,30,0,0"
+                       Margin="135,10,0,0"
                        Foreground="White"/>
             <PasswordBox Grid.Row="2"
                          Padding="5,0,5,0"

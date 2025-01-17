@@ -10,23 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Money_Manager
 {
     /// <summary>
-    /// Логика взаимодействия для LoginView.xaml
+    /// Логика взаимодействия для HomePage.xaml
     /// </summary>
-    public partial class LoginView : Page
+    public partial class HomePage : Page
     {
-        public LoginView()
+        public HomePage()
         {
             InitializeComponent();
-        }
-
-        private void OnRegistrationBtnClick(object sender, MouseButtonEventArgs e)
-        {
-            NavigationService.Navigate(new RegistrationView());
         }
     }
 }
