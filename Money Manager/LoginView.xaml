@@ -1,0 +1,109 @@
+﻿<Page x:Class="Money_Manager.LoginView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:local="clr-namespace:Money_Manager"
+      mc:Ignorable="d"
+      Title="LoginView" Height="450" Width="800">
+
+    <Page.Resources>
+        <FontFamily x:Key="MontserratSubrayada">C:\Users\rodi4\OneDrive\Рабочий стол\MontserratSubrayada-Bold.ttf</FontFamily>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Column="1" Text="Finance Manager" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="32" FontFamily="{StaticResource MontserratSubrayada}"/>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="username" Margin="140,30,0,0" Foreground="White"/>
+            <TextBox Height="40"
+                     Width="300"
+                     Padding="5,0,5,0"
+                     VerticalContentAlignment="Center"
+                     Background="Transparent"
+                     Foreground="White"
+                     BorderBrush="White"
+                     BorderThickness="0,0,0,2" Text=""/>
+            <TextBlock Grid.Row="1"
+                       Text="password"
+                       Margin="140,30,0,0"
+                       Foreground="White"/>
+            <PasswordBox Grid.Row="1"
+                         Padding="5,0,5,0"
+                         VerticalContentAlignment="Center"
+                         Height="40"
+                         Width="300"
+                         Background="Transparent"
+                         Foreground="White"
+                         BorderBrush="White"
+                         BorderThickness="0,0,0,2" Password=""/>
+            <TextBlock Grid.Row="1"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Bottom"
+                       Margin="135,0,0,0"
+                       Text="Зарегистрированы?">
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="Orange"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="False">
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+        </Grid>
+            <Grid Grid.Row="2" Grid.Column="1">
+                <Button BorderThickness="0"
+                    HorizontalAlignment="Left"
+                    Margin="135,0,0,0"
+                    Foreground="White"
+                    Content="Log in"
+                    Width="100"
+                    Height="40">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#462AD8"/>
+                        <Setter Property="BorderBrush" Value="Transparent"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Width="100" Height="40"
+                                CornerRadius="20"
+                                Background="{TemplateBinding Background}">
+                                        <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#28AEED"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#1B7ACC"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </Grid>
+    </Grid>
+</Page>
