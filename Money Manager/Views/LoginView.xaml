@@ -80,7 +80,7 @@
                     Foreground="White"
                     Content="Log in"
                     Width="100"
-                    Height="40" Grid.ColumnSpan="3">
+                    Height="40" Grid.ColumnSpan="3" Click="Button_Click">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Background" Value="#462AD8"/>
