@@ -27,6 +27,7 @@ namespace Money_Manager
         private void OnRegistrationBtnClick(object sender, MouseButtonEventArgs e)
         {
             NavigationService.Navigate(new RegistrationView());
+            ((MainWindow)Application.Current.MainWindow).TitleBarText = "Registration";
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

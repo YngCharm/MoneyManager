@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Money_Manager"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="1000" d:DesignWidth="1600"
       Title="RegistrationView">
 
     <Grid>
@@ -25,9 +25,13 @@
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBlock Text="username" Margin="135,10,0,0" Foreground="White"/>
-            <TextBox Height="40"
+            <TextBlock Grid.Row="0" Text="firstname" Margin="-245,-40,0,0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBox x:Name="firstnameRegistrarion"
+                     Grid.Row="0"
+                     Height="40"
                      Width="300"
                      Padding="5,0,5,0"
                      VerticalContentAlignment="Center"
@@ -35,11 +39,33 @@
                      Foreground="White"
                      BorderBrush="White"
                      BorderThickness="0,0,0,2" Text=""/>
-            <TextBlock Grid.Row="1"
+            <TextBlock Grid.Row="1" Text="lastname" Margin="-245,-40,0,0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBox x:Name="lastnameRegistrarion"
+                     Grid.Row="1"
+                     Height="40"
+                     Width="300"
+                     Padding="5,0,5,0"
+                     VerticalContentAlignment="Center"
+                     Background="Transparent"
+                     Foreground="White"
+                     BorderBrush="White"
+                     BorderThickness="0,0,0,2" Text=""/>
+            <TextBlock Grid.Row="2" Text="login" Margin="-245,-40,0,0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBox x:Name="loginRegistrarion"
+                     Grid.Row="2"
+                     Height="40"
+                     Width="300"
+                     Padding="5,0,5,0"
+                     VerticalContentAlignment="Center"
+                     Background="Transparent"
+                     Foreground="White"
+                     BorderBrush="White"
+                     BorderThickness="0,0,0,2" Text=""/>
+            <TextBlock Grid.Row="3"
                        Text="password"
-                       Margin="135,10,0,0"
-                       Foreground="White"/>
-            <PasswordBox Grid.Row="1"
+                        Margin="-245,-40,0,0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <PasswordBox x:Name="passwordRegistration"
+                         Grid.Row="3"
                          Padding="5,0,5,0"
                          VerticalContentAlignment="Center"
                          Height="40"
@@ -48,11 +74,11 @@
                          Foreground="White"
                          BorderBrush="White"
                          BorderThickness="0,0,0,2" Password=""/> 
-            <TextBlock Grid.Row="2"
+            <TextBlock Grid.Row="4"
                        Text="confirm password"
-                       Margin="135,10,0,0"
-                       Foreground="White"/>
-            <PasswordBox Grid.Row="2"
+                         Margin="-200,-40,0,0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <PasswordBox x:Name="confirmPasswordRegistration"
+                         Grid.Row="4"
                          Padding="5,0,5,0"
                          VerticalContentAlignment="Center"
                          Height="40"
@@ -64,12 +90,12 @@
         </Grid>
         <Grid Grid.Row="2" Grid.Column="1">
             <Button BorderThickness="0"
-                    HorizontalAlignment="Left"
-                    Margin="135,0,0,0"
+                    HorizontalAlignment="Center"
+                    Margin="-220,-100,0,0"
                     Foreground="White"
                     Content="Log in"
                     Width="100"
-                    Height="40">
+                    Height="40" Click="Button_Registration_Click">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Background" Value="#462AD8"/>
