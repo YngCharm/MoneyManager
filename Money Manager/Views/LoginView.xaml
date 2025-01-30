@@ -27,7 +27,8 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <TextBlock Text="username" Margin="140,30,0,0" Foreground="White"/>
-            <TextBox Height="40"
+            <TextBox x:Name="loginLog"
+                     Height="40"
                      Width="300"
                      Padding="5,0,5,0"
                      VerticalContentAlignment="Center"
@@ -39,7 +40,8 @@
                        Text="password"
                        Margin="140,30,0,0"
                        Foreground="White"/>
-            <PasswordBox Grid.Row="1"
+            <PasswordBox x:Name="PasswordLog"
+                         Grid.Row="1"
                          Padding="5,0,5,0"
                          VerticalContentAlignment="Center"
                          Height="40"
@@ -53,7 +55,7 @@
                        VerticalAlignment="Bottom"
                        Margin="135,0,0,0"
                        Text="Не зарегистрированы?"
-                       MouseDown="OnRegistrationBtnClick">
+                       MouseDown="Registration_Lable_Click">
                 <TextBlock.Style>
                     <Style TargetType="TextBlock">
                         <Style.Triggers>
@@ -80,7 +82,7 @@
                     Foreground="White"
                     Content="Log in"
                     Width="100"
-                    Height="40" Grid.ColumnSpan="3" Click="Button_Click">
+                    Height="40" Grid.ColumnSpan="3" Click="Login_Button_Click">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Background" Value="#462AD8"/>

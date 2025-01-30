@@ -32,7 +32,7 @@ namespace Money_Manager
 
         private void Button_Registration_Click(object sender, RoutedEventArgs e)
         {
-            if (RegistrationSuccsecs())
+            if (RegistrationSuccess())
             {
                 NavigationService.GoBack();
             }
@@ -40,7 +40,7 @@ namespace Money_Manager
         }
 
 
-        private bool RegistrationSuccsecs()
+        private bool RegistrationSuccess()
         {
             var firstname = firstnameRegistrarion.Text;
             var lastname = lastnameRegistrarion.Text;
@@ -48,26 +48,35 @@ namespace Money_Manager
             var password = passwordRegistration.Password;
             var confirmPassword = confirmPasswordRegistration.Password;
 
+            if (password.Length <= 8)
+            {
+                MessageBox.Show("Пароль должен быть не менее 8 символов.");
+                return false;
+            }
+
+            if (!password.Equals(confirmPassword))
+            {
+                MessageBox.Show("Пароли не совпадают.");
+                return false;
+            }
+
             string hashedPassword = HashPassword(password);
 
-            if (inserUser(firstname, lastname, login, hashedPassword) && password.Equals(confirmPassword) && password.Length >= 8)
-            {
-                return true;
-            }
-            return false;
+            return (insertUser(firstname, lastname, login, hashedPassword));
+            
         }
 
-        private bool inserUser(string firstname, string lastname, string login, string hashedPassword)
+        private bool insertUser(string firstname, string lastname, string login, string hashedPassword)
         {
-            string query = "INSERT INTO Users (FirstName, LastName, Login, Password_hash) VALUES (@FirstName, @LastName, @Login, @PasswordHash)";
+            string query = "INSERT INTO Users (Firstname, Lastname, Login, Password_hash) VALUES (@Firstname, @Lastname, @Login, @PasswordHash)";
             try
             {
                 using (SqlCommand command = new SqlCommand(query, database.GetConnection()))
                 {
-                    command.Parameters.AddWithValue("@FirstName", firstname);
-                    command.Parameters.AddWithValue("@LastName", lastname);
+                    command.Parameters.AddWithValue("@Firstname", firstname);
+                    command.Parameters.AddWithValue("@Lastname", lastname);
                     command.Parameters.AddWithValue("@Login", login);
-                    command.Parameters.AddWithValue("@PasswordHash", hashedPassword);
+                    command.Parameters.AddWithValue("@Passwordhash", hashedPassword);
 
                     database.OpenConnection();
 
@@ -77,14 +86,14 @@ namespace Money_Manager
                     return rowsAffected == 1;
                 }
                 
-            }
+            }       
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
                 return false;
             }
         }
-        private string HashPassword(string password)
+        public string HashPassword(string password)
         {
             using (SHA256 sha256 = SHA256.Create())
             {
