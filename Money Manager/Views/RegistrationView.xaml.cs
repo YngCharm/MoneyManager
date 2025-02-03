@@ -1,5 +1,6 @@
 ﻿using Money_Manager.Model;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -48,7 +49,7 @@ namespace Money_Manager
             var password = passwordRegistration.Password;
             var confirmPassword = confirmPasswordRegistration.Password;
 
-            if (password.Length <= 8)
+            if (password.Length < 8)
             {
                 MessageBox.Show("Пароль должен быть не менее 8 символов.");
                 return false;
@@ -68,7 +69,8 @@ namespace Money_Manager
 
         private bool insertUser(string firstname, string lastname, string login, string hashedPassword)
         {
-            string query = "INSERT INTO Users (Firstname, Lastname, Login, Password_hash) VALUES (@Firstname, @Lastname, @Login, @PasswordHash)";
+            string query = "INSERT INTO Users (Firstname, Lastname, Login, Password_hash) VALUES (@Firstname, @Lastname, @Login, @PasswordHash)"
+                + "SELECT SCOPE_IDENTITY()";
             try
             {
                 using (SqlCommand command = new SqlCommand(query, database.GetConnection()))
@@ -80,19 +82,52 @@ namespace Money_Manager
 
                     database.OpenConnection();
 
-                    // Выполнение запроса
-                    int rowsAffected = command.ExecuteNonQuery();
+                    var result = command.ExecuteScalar();
 
-                    return rowsAffected == 1;
+                    if (result != DBNull.Value && result != null) // Проверяем, что результат не null
+                    {
+                        int newUserId = Convert.ToInt32(result); // Преобразуем результат в int
+                        return CreateDefaultAccount(newUserId); // Передаем ID пользователя в метод создания счета
+                    }
+                    else
+                    {
+                        MessageBox.Show("Не удалось получить ID пользователя.");
+                    }
+
                 }
                 
             }       
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+            return false;
+
+        }
+
+        private bool CreateDefaultAccount(int userId)
+        {
+            string accountQuery = "INSERT INTO Account (Title, Balance, User_id) VALUES (@Title, @Balance, @UserId)";
+            try
+            {
+                using (SqlCommand command = new SqlCommand(accountQuery, database.GetConnection()))
+                {
+                    command.Parameters.AddWithValue("@Title", "Основной счет");
+                    command.Parameters.AddWithValue("@Balance", 0);
+                    command.Parameters.AddWithValue("@UserId", userId);
+
+                    int rowsAffected = command.ExecuteNonQuery();
+                    return rowsAffected == 1;
+
+                }
+            }
+            catch(Exception ex)
+            {
+             MessageBox.Show(ex.Message );
                 return false;
             }
         }
+
         public string HashPassword(string password)
         {
             using (SHA256 sha256 = SHA256.Create())
